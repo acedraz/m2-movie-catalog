@@ -23,13 +23,13 @@
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
     <menu>
         <add
-            id="Aislan_MovieCatalog::catalog_movie"
+            id="Aislan_MovieCatalog::catalog_movies"
             title="Movies"
             translate="title"
             module="Aislan_MovieCatalog"
             parent="Magento_Catalog::inventory"
             sortOrder="30"
-            action="movie_catalog/catalog/movie/"
-            resource="Aislan_MovieCatalog::catalog_movie"/>
+            action="catalog_movies/movies/"
+            resource="Aislan_MovieCatalog::catalog_movies"/>
     </menu>
 </config>

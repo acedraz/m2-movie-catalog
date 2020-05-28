@@ -26,7 +26,7 @@
             <resource id="Magento_Backend::admin">
                 <resource id="Magento_Catalog::catalog">
                     <resource id="Magento_Catalog::catalog_inventory">
-                        <resource id="Aislan_MovieCatalog::catalog_movie" title="Movies" translate="title" sortOrder="30"/>
+                        <resource id="Aislan_MovieCatalog::catalog_movies" title="Movies" translate="title" sortOrder="30"/>
                     </resource>
                 </resource>
             </resource>

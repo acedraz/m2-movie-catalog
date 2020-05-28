@@ -1,1 +1,8 @@
 "Movies","Filmes"
+"Add Movie","Adicionar Filme"
+"Frequency of updating with the api database. Write in cron expression.","Frequência de atualização com o banco de dados da api. Escreva usando cron expression."
+"API key","Chave da API"
+"API url","Url da API"
+"Update frequency","Frequência de atualização"
+"Movies Integration","Integração de filmes"
+"Reconnection quantity if no api is returned","Quantidade de reconexão caso não se tenha retorno da api"

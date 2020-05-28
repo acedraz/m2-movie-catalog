@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Avanti
+ *
+ * NOTICE OF LICENSE
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to https://www.penseavanti.com.br for more information.
+ *
+ * @module      Avanti Website Switcher
+ * @category    Avanti
+ * @package     Avanti_WebsiteSwitcher
+ *
+ * @copyright   Copyright (c) 2019 Avanti. (https://www.penseavanti.com.br)
+ *
+ * @author      Avanti Core Team <contato@penseavanti.com.br>
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <movies_integration>
+            <general>
+                <enable>1</enable>
+                <api_url>https://api.themoviedb.org/3/</api_url>
+                <cron>0 0 0 * * ?</cron>
+            </general>
+        </movies_integration>
+    </default>
+</config>
