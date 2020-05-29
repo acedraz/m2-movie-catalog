@@ -122,8 +122,7 @@ class TMDApiService implements TMDApiServiceInterface
         if (empty($this->apiRequestUri)) {
             $this->apiRequestUri = self::API_REQUEST_URI;
         }
-        /** @var Client $client */
-        $client = $this->clientFactory->create(['config' => [
+        $client = $this->_clientFactory->create(['config' => [
             'base_uri' => $this->apiRequestUri
         ]]);
         try {
@@ -133,8 +132,7 @@ class TMDApiService implements TMDApiServiceInterface
                 $params
             );
         } catch (GuzzleException $exception) {
-            /** @var Response $response */
-            $response = $this->responseFactory->create([
+            $response = $this->_responseFactory->create([
                 'status' => $exception->getCode(),
                 'reason' => $exception->getMessage()
             ]);
@@ -155,7 +153,7 @@ class TMDApiService implements TMDApiServiceInterface
         } while ((int)$status != 200 && $attempts < $this->apiAttempts);
         if ($status != 200)
         {
-            $this->logger->critical('Error in API request');
+            $this->_logger->critical('Error in API request');
             return;
         }
         $responseBody = $response->getBody();
