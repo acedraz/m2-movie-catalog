@@ -28,6 +28,7 @@ use Aislan\MovieCatalog\Helper\Config;
 use Aislan\MovieCatalog\Helper\System;
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientFactory;
+use GuzzleHttp\RequestOptions;
 use GuzzleHttp\Exception\GuzzleException;
 use GuzzleHttp\Psr7\Response;
 use GuzzleHttp\Psr7\ResponseFactory;
@@ -145,7 +146,7 @@ class TMDApiService implements TMDApiServiceInterface
      */
     public function execute()
     {
-        $params = [Config::API_KEY => $this->apiRequestKey];
+        $params = [RequestOptions::QUERY => [Config::API_KEY => $this->apiRequestKey]];
         $attempts = 0;
         do {
             $response = $this->doRequest($this->apiRequestEndpoint,$params);

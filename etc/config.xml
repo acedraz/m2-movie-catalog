@@ -26,6 +26,7 @@
             <general>
                 <enable>1</enable>
                 <api_url>https://api.themoviedb.org/3/</api_url>
+                <attempts>10</attempts>
                 <cron>0 0 0 * * ?</cron>
             </general>
         </movies_integration>
