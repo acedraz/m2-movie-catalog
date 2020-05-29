@@ -23,4 +23,16 @@
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
     <preference for="Aislan\MovieCatalog\Api\Service\TMDApiServiceInterface"
                 type="Aislan\MovieCatalog\Service\TMDApiService"/>
+    <type name="Aislan\MovieCatalog\Console\Command\UpdateMovies">
+        <arguments>
+            <argument name="name" xsi:type="string">catalog:movies:update</argument>
+        </arguments>
+    </type>
+    <type name="Magento\Framework\Console\CommandList">
+        <arguments>
+            <argument name="commands" xsi:type="array">
+                <item name="catalog_movie_update" xsi:type="object">Aislan\MovieCatalog\Console\Command\UpdateMovies</item>
+            </argument>
+        </arguments>
+    </type>
 </config>
