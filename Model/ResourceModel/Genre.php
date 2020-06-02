@@ -21,22 +21,22 @@
 
 declare(strict_types=1);
 
-namespace Aislan\MovieCatalog\Api\Service;
+namespace Aislan\MovieCatalog\Model\ResourceModel;
+
+use Aislan\MovieCatalog\Model\Genre as ModelGenre;
+use Magento\Framework\Model\ResourceModel\Db\AbstractDb;
 
 /**
- * Interface TMDApiServiceInterface
- * @api
+ * Class Genre
  */
-interface TMDApiServiceInterface
+class Genre extends AbstractDb
 {
-    /**
-     * @return mixed
-     */
-    public function execute();
 
-    /**
-     * @param $endpoint
-     * @return mixed
-     */
-    public function setRequestEndpoint($endpoint);
+    const AISLAN_MOVIECATALOG_MODEL_RESOURCE_MODEL_GENRE = 'Aislan\MovieCatalog\Model\ResourceModel\Genre';
+    const ID_FIELD_NAME = 'id';
+
+    protected function _construct()
+    {
+        $this->_init(ModelGenre::CACHE_TAG,self::ID_FIELD_NAME);
+    }
 }

@@ -63,6 +63,10 @@ class TMDApiService implements TMDApiServiceInterface
 
     const API_REQUEST_URI = 'https://api.themoviedb.org/3/';
 
+    const GENRE_MOVIE_LIST = 'genre/movie/list';
+
+    const DISCOVER_MOVIE = 'discover/movie';
+
     /**
      * @var ClientFactory
      */
@@ -103,7 +107,7 @@ class TMDApiService implements TMDApiServiceInterface
         $this->apiRequestKey = $this->system->getApiKey();
         $this->apiAttempts = $this->system->getApiAttempts();
         $this->_logger = $_logger;
-        $this->apiRequestEndpoint = Config::DISCOVER_MOVIE;
+        $this->apiRequestEndpoint = self::DISCOVER_MOVIE;
     }
 
     /**
@@ -155,7 +159,7 @@ class TMDApiService implements TMDApiServiceInterface
         if ($status != 200)
         {
             $this->_logger->critical('Error in API request');
-            return;
+            return false;
         }
         $responseBody = $response->getBody();
         $responseContent = $responseBody->getContents();

@@ -21,22 +21,38 @@
 
 declare(strict_types=1);
 
-namespace Aislan\MovieCatalog\Api\Service;
+namespace Aislan\MovieCatalog\Api\Data;
 
 /**
- * Interface TMDApiServiceInterface
+ * Interface GenreInterface
  * @api
  */
-interface TMDApiServiceInterface
+interface GenreInterface
 {
     /**
      * @return mixed
      */
-    public function execute();
+    public function getIdentities();
 
     /**
-     * @param $endpoint
+     * @return int
+     */
+    public function getId();
+
+    /**
+     * @param $id
+     * @return void
+     */
+    public function setId($id);
+
+    /**
+     * @param $name
      * @return mixed
      */
-    public function setRequestEndpoint($endpoint);
+    public function setName($name);
+
+    /**
+     * @return string
+     */
+    public function getName();
 }

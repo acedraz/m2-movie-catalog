@@ -1,0 +1,15 @@
+{
+    "catalog_movie_genre": {
+        "column": {
+            "id": true,
+            "api_id": true,
+            "name": true
+        },
+        "index": {
+            "CATALOG_MOVIE_GENRE_ID": true
+        },
+        "constraint": {
+            "CATALOG_MOVIE_GENRE_API_ID": true
+        }
+    }
+}

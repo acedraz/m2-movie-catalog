@@ -21,22 +21,24 @@
 
 declare(strict_types=1);
 
-namespace Aislan\MovieCatalog\Api\Service;
+namespace Aislan\MovieCatalog\Api\Data;
+
+use Magento\Framework\Data\SearchResultInterface;
 
 /**
- * Interface TMDApiServiceInterface
+ * Interface GenreSearchResultInterface
  * @api
  */
-interface TMDApiServiceInterface
+interface GenreSearchResultInterface extends SearchResultInterface
 {
     /**
-     * @return mixed
+     * @return \Aislan\MovieCatalog\Api\Data\GenreInterface[]
      */
-    public function execute();
+    public function getItems();
 
     /**
-     * @param $endpoint
-     * @return mixed
+     * @param \Aislan\MovieCatalog\Api\Data\GenreInterface[] $items
+     * @return void
      */
-    public function setRequestEndpoint($endpoint);
+    public function setItems(array $items);
 }

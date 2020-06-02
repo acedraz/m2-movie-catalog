@@ -21,22 +21,15 @@
 
 declare(strict_types=1);
 
-namespace Aislan\MovieCatalog\Api\Service;
+namespace Aislan\MovieCatalog\Model;
+
+use Aislan\MovieCatalog\Api\Data\GenreSearchResultInterface;
+use Magento\Framework\Api\SearchResults;
 
 /**
- * Interface TMDApiServiceInterface
- * @api
+ * Class GenreSearchResult
  */
-interface TMDApiServiceInterface
+class GenreSearchResult extends SearchResults implements GenreSearchResultInterface
 {
-    /**
-     * @return mixed
-     */
-    public function execute();
 
-    /**
-     * @param $endpoint
-     * @return mixed
-     */
-    public function setRequestEndpoint($endpoint);
 }

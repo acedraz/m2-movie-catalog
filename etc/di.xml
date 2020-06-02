@@ -23,6 +23,14 @@
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
     <preference for="Aislan\MovieCatalog\Api\Service\TMDApiServiceInterface"
                 type="Aislan\MovieCatalog\Service\TMDApiService"/>
+    <preference for="Aislan\MovieCatalog\Api\GenreInterface"
+                type="Aislan\MovieCatalog\Model\Genre"/>
+    <preference for="Aislan\MovieCatalog\Api\GenreRepositoryInterface"
+                type="Aislan\MovieCatalog\Model\GenreRepository" />
+    <preference for="Aislan\MovieCatalog\Api\Data\GenreInterface"
+                type="Aislan\MovieCatalog\Model\Genre" />
+    <preference for="Aislan\MovieCatalog\Api\Data\GenreSearchResultInterface"
+                type="Aislan\MovieCatalog\Model\GenreSearchResult" />
     <type name="Aislan\MovieCatalog\Console\Command\UpdateMovies">
         <arguments>
             <argument name="name" xsi:type="string">catalog:movies:update</argument>

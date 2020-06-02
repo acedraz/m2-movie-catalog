@@ -29,7 +29,6 @@ namespace Aislan\MovieCatalog\Helper;
 class Config
 {
     const API_KEY = 'api_key';
-    const DISCOVER_MOVIE = 'discover/movie';
     const SYSTEM_MOVIEINTEGRATION_GENERAL = 'movies_integration/general/';
     const SYSTEM_MOVIEINTEGRATION_ENABLE = self::SYSTEM_MOVIEINTEGRATION_GENERAL.'enable';
     const SYSTEM_MOVIEINTEGRATION_API_URL = self::SYSTEM_MOVIEINTEGRATION_GENERAL.'api_url';
