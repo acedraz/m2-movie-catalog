@@ -127,12 +127,12 @@ class UpdateMovies extends Command
             return;
         }
         $output->writeln('<info>Genre updated<error>');
-        $collection = $this->TMDApiService->execute();
-        if (!$collection) {
-            $output->writeln('<error>Error api request<error>');
+        $output->writeln('<info>Updating catalog movie<info>');
+        if (!$this->updateMovies()) {
+            $output->writeln('<error>Error in update catalog movies<error>');
             return;
         }
-        $movies = json_decode($collection);
+        $output->writeln('<info>Catalog movies updated<error>');
     }
 
     /**
@@ -141,8 +141,7 @@ class UpdateMovies extends Command
      */
     protected function updateGenre()
     {
-        $this->TMDApiService->setRequestEndpoint(TMDApiService::GENRE_MOVIE_LIST);
-        $collectionResponse = $this->TMDApiService->execute();
+        $collectionResponse = $this->request(TMDApiService::GENRE_MOVIE_LIST);
         if (!$collectionResponse) {
             return false;
         }
@@ -156,5 +155,32 @@ class UpdateMovies extends Command
             }
         }
         return true;
+    }
+
+    protected function updateMovies()
+    {
+        $response = json_decode($this->request(TMDApiService::DISCOVER_MOVIE));
+        $totalPages = $response->total_pages;
+        if (!$totalPages) {
+            return false;
+        }
+        $collectionResponse = [];
+        for ($page = 1; $page <= $totalPages; $page++) {
+            $this->TMDApiService->addParams([TMDApiService::PAGE => $page]);
+            $response = json_decode($this->request(TMDApiService::DISCOVER_MOVIE));
+            foreach ($response->results as $result) {
+                array_push($collectionResponse,$result);
+            }
+        }
+    }
+
+    /**
+     * @param $endpoint
+     * @return mixed
+     */
+    protected function request($endpoint)
+    {
+        $this->TMDApiService->setRequestEndpoint($endpoint);
+        return $this->TMDApiService->execute();
     }
 }

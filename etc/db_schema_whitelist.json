@@ -11,5 +11,42 @@
         "constraint": {
             "CATALOG_MOVIE_GENRE_API_ID": true
         }
+    },
+    "catalog_movie_api": {
+        "column": {
+            "entity_id": true,
+            "popularity": true,
+            "vote_count": true,
+            "video": true,
+            "poster_path": true,
+            "api_id": true,
+            "adult": true,
+            "backdrop_path": true,
+            "original_language": true,
+            "original_title": true,
+            "title": true,
+            "vote_average": true,
+            "overview": true,
+            "release_date": true
+        },
+        "index": {
+            "CATALOG_MOVIE_API_ENTITY_ID": true
+        },
+        "constraint": {
+            "CATALOG_MOVIE_API_API_ID": true
+        }
+    },
+    "catalog_movie_api_genre": {
+        "column": {
+            "entity_id": true,
+            "movie_api_id": true,
+            "genre_api_id": true
+        },
+        "index": {
+            "CATALOG_MOVIE_API_GENRE_ENTITY_ID": true
+        },
+        "constraint": {
+            "CATALOG_MOVIE_API_GENRE_MOVIE_API_ID_GENRE_API_ID": true
+        }
     }
 }

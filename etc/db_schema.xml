@@ -35,4 +35,43 @@
             <column name="api_id"/>
         </constraint>
     </table>
+    <table name="catalog_movie_api" resource="default" engine="innodb"
+           comment="Catalog Movie">
+        <column xsi:type="int" name="entity_id" padding="10" unsigned="true" nullable="false" identity="true"
+                comment="Entity ID"/>
+        <column xsi:type="float" name="popularity" unsigned="true" nullable="false"
+                comment="Popularity"/>
+        <column xsi:type="int" name="vote_count" unsigned="true" nullable="false"
+                comment="Count votes"/>
+        <column xsi:type="boolean" name="video" nullable="false" comment="Have video"/>
+        <column xsi:type="text" name="poster_path" nullable="false" comment="Image poster path"/>
+        <column xsi:type="int" name="api_id" padding="5" unsigned="true" nullable="false" comment="Api ID"/>
+        <column xsi:type="boolean" name="adult" nullable="false" comment="Explicit"/>
+        <column xsi:type="text" name="backdrop_path" nullable="false" comment="Path image"/>
+        <column xsi:type="text" name="original_language" nullable="false" comment="Original Language"/>
+        <column xsi:type="text" name="original_title" nullable="false" comment="Original Title"/>
+        <column xsi:type="text" name="title" nullable="false" comment="Title"/>
+        <column xsi:type="float" name="vote_average" nullable="false" comment="Votes"/>
+        <column xsi:type="text" name="overview" nullable="false" comment="Sinopse"/>
+        <column xsi:type="date" name="release_date" nullable="false" comment="Release Date"/>
+        <index referenceId="CATALOG_MOVIE_API" indexType="btree">
+            <column name="entity_id"/>
+        </index>
+        <constraint xsi:type="unique" referenceId="CATALOG_MOVIE_API_API_ID">
+            <column name="api_id"/>
+        </constraint>
+    </table>
+    <table name="catalog_movie_api_genre" resource="default" engine="innodb" comment="Catalog Movie API and Genre Associate">
+        <column xsi:type="int" name="entity_id" padding="10" unsigned="true" nullable="false" identity="true"
+                comment="Entity ID"/>
+        <column xsi:type="int" name="movie_api_id" padding="5" unsigned="true" nullable="false" comment="Movie APi ID"/>
+        <column xsi:type="int" name="genre_api_id" padding="5" unsigned="true" nullable="false" comment="Genre APi ID"/>
+        <index referenceId="CATALOG_MOVIE_API" indexType="btree">
+            <column name="entity_id"/>
+        </index>
+        <constraint xsi:type="unique" referenceId="CATALOG_MOVIE_API_GENRE_MOVIE_API_ID_GENRE_API_ID">
+            <column name="movie_api_id"/>
+            <column name="genre_api_id"/>
+        </constraint>
+    </table>
 </schema>

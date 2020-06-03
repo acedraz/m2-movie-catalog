@@ -39,4 +39,10 @@ interface TMDApiServiceInterface
      * @return mixed
      */
     public function setRequestEndpoint($endpoint);
+
+    /**
+     * @param $params
+     * @return mixed
+     */
+    public function addParams($params);
 }

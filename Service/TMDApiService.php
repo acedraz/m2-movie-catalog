@@ -41,6 +41,16 @@ use Psr\Log\LoggerInterface;
 class TMDApiService implements TMDApiServiceInterface
 {
 
+    const API_REQUEST_URI = 'https://api.themoviedb.org/3/';
+
+    const GENRE_MOVIE_LIST = 'genre/movie/list';
+
+    const DISCOVER_MOVIE = 'discover/movie';
+
+    const PAGE = 'page';
+
+    const URL_PATH_IMAGE = 'https://image.tmdb.org/t/p/w300_and_h450_bestv2';
+
     /**
      * @var string
      */
@@ -60,12 +70,6 @@ class TMDApiService implements TMDApiServiceInterface
      * @var int
      */
     private $apiAttempts;
-
-    const API_REQUEST_URI = 'https://api.themoviedb.org/3/';
-
-    const GENRE_MOVIE_LIST = 'genre/movie/list';
-
-    const DISCOVER_MOVIE = 'discover/movie';
 
     /**
      * @var ClientFactory
@@ -88,6 +92,11 @@ class TMDApiService implements TMDApiServiceInterface
     private $_logger;
 
     /**
+     * @var \string[][]
+     */
+    private $params;
+
+    /**
      * TMDApiService constructor.
      * @param ClientFactory $clientFactory
      * @param ResponseFactory $responseFactory
@@ -108,6 +117,7 @@ class TMDApiService implements TMDApiServiceInterface
         $this->apiAttempts = $this->system->getApiAttempts();
         $this->_logger = $_logger;
         $this->apiRequestEndpoint = self::DISCOVER_MOVIE;
+        $this->params = [RequestOptions::QUERY => [Config::API_KEY => $this->apiRequestKey]];
     }
 
     /**
@@ -150,10 +160,10 @@ class TMDApiService implements TMDApiServiceInterface
      */
     public function execute()
     {
-        $params = [RequestOptions::QUERY => [Config::API_KEY => $this->apiRequestKey]];
+
         $attempts = 0;
         do {
-            $response = $this->doRequest($this->apiRequestEndpoint,$params);
+            $response = $this->doRequest($this->apiRequestEndpoint,$this->params);
             $status = $response->getStatusCode();
         } while ((int)$status != 200 && $attempts < $this->apiAttempts);
         if ($status != 200)
@@ -172,5 +182,15 @@ class TMDApiService implements TMDApiServiceInterface
     public function setRequestEndpoint($endpoint)
     {
         $this->apiRequestEndpoint = $endpoint;
+    }
+
+    /**
+     * @param $params
+     */
+    public function addParams($params)
+    {
+        foreach ($params as $key => $value) {
+            $this->params[RequestOptions::QUERY][$key] = $value;
+        }
     }
 }
