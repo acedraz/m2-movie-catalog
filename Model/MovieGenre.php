@@ -23,22 +23,20 @@ declare(strict_types=1);
 
 namespace Aislan\MovieCatalog\Model;
 
-use Aislan\MovieCatalog\Api\Data\MovieApiInterface;
+use Aislan\MovieCatalog\Api\Data\MovieGenreInterface;
 use Magento\Framework\Model\AbstractModel;
-use Aislan\MovieCatalog\Model\ResourceModel\MovieApi as ResourceModelMovieApi;
+use Aislan\MovieCatalog\Model\ResourceModel\MovieGenre as ResourceModelMovieGenre;
 
 /**
- * Class Genre
+ * Class MovieGenre
  */
-class MovieApi extends AbstractModel implements MovieApiInterface
+class MovieGenre extends AbstractModel implements MovieGenreInterface
 {
-    const CACHE_TAG = 'catalog_movie_api';
+    const CACHE_TAG = 'catalog_movie_api_genre';
 
-    const AISLAN_MOVIECATALOG_MODEL_MOVIE_API = 'Aislan\MovieCatalog\Model\MovieApi';
+    const AISLAN_MOVIECATALOG_MODEL_MOVIE_GENRE = 'Aislan\MovieCatalog\Model\MovieGenre';
 
     const ID = 'entity_id';
-
-    const NAME = 'name';
 
     protected $_cacheTag = self::CACHE_TAG;
 
@@ -46,7 +44,7 @@ class MovieApi extends AbstractModel implements MovieApiInterface
 
     protected function _construct()
     {
-        $this->_init(ResourceModelMovieApi::AISLAN_MOVIECATALOG_MODEL_RESOURCE_MODEL_MOVIE_API);
+        $this->_init(ResourceModelMovieGenre::AISLAN_MOVIECATALOG_MODEL_RESOURCE_MODEL_MOVIE_GENRE);
     }
 
     /**

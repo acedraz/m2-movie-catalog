@@ -23,17 +23,11 @@ declare(strict_types=1);
 
 namespace Aislan\MovieCatalog\Console\Command;
 
-use Aislan\MovieCatalog\Model\ResourceModel\Genre\CollectionFactory;
-use Aislan\MovieCatalog\Model\GenreFactory;
-use Aislan\MovieCatalog\Api\GenreRepositoryInterface;
-use Aislan\MovieCatalog\Api\Service\TMDApiServiceInterface;
+use Aislan\MovieCatalog\Api\UpdateCatalogMovieInterface;
 use Aislan\MovieCatalog\Helper\System;
-use Magento\Framework\Api\FilterBuilderFactory;
-use Magento\Framework\Api\SearchCriteriaBuilderFactory;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
-use Aislan\MovieCatalog\Service\TMDApiService;
 
 /**
  * Class Update Movies
@@ -46,63 +40,24 @@ class UpdateMovies extends Command
     private $system;
 
     /**
-     * @var TMDApiServiceInterface
+     * @var UpdateCatalogMovieInterface
      */
-    private $TMDApiService;
+    private $updateCatalogMovie;
 
     /**
-     * @var CollectionFactory
-     */
-    private $collectionFactory;
-
-    /**
-     * @var GenreFactory
-     */
-    private $genreFactory;
-
-    /**
-     * @var SearchCriteriaBuilder
-     */
-    private $searchCriteriaBuilder;
-
-    /**
-     * @var FilterBuilder
-     */
-    private $filterBuilder;
-    /**
-     * @var GenreRepositoryInterface
-     */
-    private $genreRepository;
-
-    /**
-     * GenerateIndex constructor.
+     * UpdateMovies constructor.
      * @param string|null $name
      * @param System $system
-     * @param TMDApiServiceInterface $TMDApiService
-     * @param CollectionFactory $collectionFactory
-     * @param GenreFactory $genreFactory
-     * @param SearchCriteriaBuilder $searchCriteriaBuilder
-     * @param FilterBuilder $filterBuilder
-     * @param GenreRepositoryInterface $genreRepository
+     * @param UpdateCatalogMovieInterface $updateCatalogMovie
      */
     public function __construct(
         string $name = null,
         System $system,
-        TMDApiServiceInterface $TMDApiService,
-        CollectionFactory $collectionFactory,
-        GenreFactory $genreFactory,
-        SearchCriteriaBuilderFactory $searchCriteriaBuilder,
-        FilterBuilderFactory $filterBuilder,
-        GenreRepositoryInterface $genreRepository
+        UpdateCatalogMovieInterface $updateCatalogMovie
     ) {
         parent::__construct($name);
         $this->system = $system;
-        $this->TMDApiService = $TMDApiService;
-        $this->collectionFactory = $collectionFactory;
-        $this->genreFactory = $genreFactory;
-        $this->searchCriteriaBuilder = $searchCriteriaBuilder;
-        $this->filterBuilder = $filterBuilder;
-        $this->genreRepository = $genreRepository;
+        $this->updateCatalogMovie = $updateCatalogMovie;
     }
 
     /**
@@ -122,65 +77,16 @@ class UpdateMovies extends Command
     {
         $output->writeln('<info>Executing<info>');
         $output->writeln('<info>Updating genre type movie<info>');
-        if (!$this->updateGenre()) {
+        if (!$this->updateCatalogMovie->updateGenre()) {
             $output->writeln('<error>Error in update genre request<error>');
             return;
         }
         $output->writeln('<info>Genre updated<error>');
         $output->writeln('<info>Updating catalog movie<info>');
-        if (!$this->updateMovies()) {
+        if (!$this->updateCatalogMovie->updateMovies()) {
             $output->writeln('<error>Error in update catalog movies<error>');
             return;
         }
         $output->writeln('<info>Catalog movies updated<error>');
-    }
-
-    /**
-     * @return bool
-     * @throws \Exception
-     */
-    protected function updateGenre()
-    {
-        $collectionResponse = $this->request(TMDApiService::GENRE_MOVIE_LIST);
-        if (!$collectionResponse) {
-            return false;
-        }
-        $response = json_decode($collectionResponse,true);
-        foreach ($response['genres'] as $genre) {
-            $items = $this->genreRepository->getGenreByApiId($genre['id']);
-            if (empty($items->getItems())) {
-                $this->genreFactory->create()
-                    ->setData(['api_id' => $genre['id'],'name' => $genre['name']])
-                    ->save();
-            }
-        }
-        return true;
-    }
-
-    protected function updateMovies()
-    {
-        $response = json_decode($this->request(TMDApiService::DISCOVER_MOVIE));
-        $totalPages = $response->total_pages;
-        if (!$totalPages) {
-            return false;
-        }
-        $collectionResponse = [];
-        for ($page = 1; $page <= $totalPages; $page++) {
-            $this->TMDApiService->addParams([TMDApiService::PAGE => $page]);
-            $response = json_decode($this->request(TMDApiService::DISCOVER_MOVIE));
-            foreach ($response->results as $result) {
-                array_push($collectionResponse,$result);
-            }
-        }
-    }
-
-    /**
-     * @param $endpoint
-     * @return mixed
-     */
-    protected function request($endpoint)
-    {
-        $this->TMDApiService->setRequestEndpoint($endpoint);
-        return $this->TMDApiService->execute();
     }
 }

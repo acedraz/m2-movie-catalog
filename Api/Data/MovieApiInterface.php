@@ -24,7 +24,7 @@ declare(strict_types=1);
 namespace Aislan\MovieCatalog\Api\Data;
 
 /**
- * Interface GenreInterface
+ * Interface MovieApiInterface
  * @api
  */
 interface MovieApiInterface

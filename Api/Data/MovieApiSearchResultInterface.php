@@ -26,7 +26,7 @@ namespace Aislan\MovieCatalog\Api\Data;
 use Magento\Framework\Data\SearchResultInterface;
 
 /**
- * Interface GenreSearchResultInterface
+ * Interface MovieApiSearchResultInterface
  * @api
  */
 interface MovieApiSearchResultInterface extends SearchResultInterface

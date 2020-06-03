@@ -53,7 +53,7 @@
         <column xsi:type="text" name="title" nullable="false" comment="Title"/>
         <column xsi:type="float" name="vote_average" nullable="false" comment="Votes"/>
         <column xsi:type="text" name="overview" nullable="false" comment="Sinopse"/>
-        <column xsi:type="date" name="release_date" nullable="false" comment="Release Date"/>
+        <column xsi:type="date" name="release_date" comment="Release Date"/>
         <index referenceId="CATALOG_MOVIE_API" indexType="btree">
             <column name="entity_id"/>
         </index>

@@ -23,20 +23,20 @@ declare(strict_types=1);
 
 namespace Aislan\MovieCatalog\Model\ResourceModel;
 
-use Aislan\MovieCatalog\Model\MovieApi as ModelMovieApi;
+use Aislan\MovieCatalog\Model\MovieGenre as ModelMovieGenre;
 use Magento\Framework\Model\ResourceModel\Db\AbstractDb;
 
 /**
- * Class MovieApi
+ * Class MovieGenre
  */
-class MovieApi extends AbstractDb
+class MovieGenre extends AbstractDb
 {
 
-    const AISLAN_MOVIECATALOG_MODEL_RESOURCE_MODEL_MOVIE_API = 'Aislan\MovieCatalog\Model\ResourceModel\MovieApi';
+    const AISLAN_MOVIECATALOG_MODEL_RESOURCE_MODEL_MOVIE_GENRE = 'Aislan\MovieCatalog\Model\ResourceModel\MovieGenre';
     const ID_FIELD_ID = 'entity_id';
 
     protected function _construct()
     {
-        $this->_init(ModelMovieApi::CACHE_TAG,self::ID_FIELD_ID);
+        $this->_init(ModelMovieGenre::CACHE_TAG,self::ID_FIELD_ID);
     }
 }

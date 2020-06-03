@@ -21,22 +21,15 @@
 
 declare(strict_types=1);
 
-namespace Aislan\MovieCatalog\Model\ResourceModel;
+namespace Aislan\MovieCatalog\Model;
 
-use Aislan\MovieCatalog\Model\MovieApi as ModelMovieApi;
-use Magento\Framework\Model\ResourceModel\Db\AbstractDb;
+use Aislan\MovieCatalog\Api\Data\MovieGenreSearchResultInterface;
+use Magento\Framework\Api\SearchResults;
 
 /**
- * Class MovieApi
+ * Class MovieGenreSearchResult
  */
-class MovieApi extends AbstractDb
+class MovieGenreSearchResult extends SearchResults implements MovieGenreSearchResultInterface
 {
 
-    const AISLAN_MOVIECATALOG_MODEL_RESOURCE_MODEL_MOVIE_API = 'Aislan\MovieCatalog\Model\ResourceModel\MovieApi';
-    const ID_FIELD_ID = 'entity_id';
-
-    protected function _construct()
-    {
-        $this->_init(ModelMovieApi::CACHE_TAG,self::ID_FIELD_ID);
-    }
 }

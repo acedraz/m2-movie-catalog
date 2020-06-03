@@ -26,26 +26,26 @@ namespace Aislan\MovieCatalog\Api;
 use Magento\Framework\Api\SearchCriteriaInterface;
 
 /**
- * Interface MovieApiRepositoryInterface
+ * Interface MovieGenreRepositoryInterface
  * @package Aislan\MovieCatalog\Api
  */
-interface MovieApiRepositoryInterface
+interface MovieGenreRepositoryInterface
 {
     /**
-     * @param \Aislan\MovieCatalog\Api\Data\MovieApiInterface $movieApi
-     * @return \Aislan\MovieCatalog\Api\Data\MovieApiInterface
+     * @param \Aislan\MovieCatalog\Api\Data\MovieGenreInterface $movieGenre
+     * @return \Aislan\MovieCatalog\Api\Data\MovieGenreInterface
      */
-    public function save(\Aislan\MovieCatalog\Api\Data\MovieApiInterface $movieApi);
+    public function save(\Aislan\MovieCatalog\Api\Data\MovieGenreInterface $movieGenre);
 
     /**
-     * @param \Aislan\MovieCatalog\Api\Data\MovieApiInterface $movieApi
-     * @return \Aislan\MovieCatalog\Api\Data\MovieApiInterface
+     * @param \Aislan\MovieCatalog\Api\Data\MovieGenreInterface $movieGenre
+     * @return \Aislan\MovieCatalog\Api\Data\MovieGenreInterface
      */
-    public function delete(\Aislan\MovieCatalog\Api\Data\MovieApiInterface $movieApi);
+    public function delete(\Aislan\MovieCatalog\Api\Data\MovieGenreInterface $movieGenre);
 
     /**
      * @param SearchCriteriaInterface $criteria
-     * @return \Aislan\MovieCatalog\Api\Data\MovieApiSearchResultInterface
+     * @return \Aislan\MovieCatalog\Api\Data\MovieGenreSearchResultInterface
      */
     public function getList(SearchCriteriaInterface $criteria);
 
@@ -62,8 +62,8 @@ interface MovieApiRepositoryInterface
     public function deleteById($id);
 
     /**
-     * @param $apiId
+     * @param $movieApiId
      * @return mixed
      */
-    public function getMovieApiByApiId($apiId);
+    public function getMovieGenreByMovieApiId($movieApiId);
 }
