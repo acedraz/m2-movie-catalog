@@ -31,6 +31,12 @@
                 type="Aislan\MovieCatalog\Model\Genre" />
     <preference for="Aislan\MovieCatalog\Api\Data\GenreSearchResultInterface"
                 type="Aislan\MovieCatalog\Model\GenreSearchResult" />
+    <preference for="Aislan\MovieCatalog\Api\Data\MovieApiInterface"
+                type="Aislan\MovieCatalog\Model\MovieApi"/>
+    <preference for="Aislan\MovieCatalog\Api\MovieApiRepositoryInterface"
+                type="Aislan\MovieCatalog\Model\MovieApiRepository"/>
+    <preference for="Aislan\MovieCatalog\Api\MovieApiRepositoryInterface"
+                type="Aislan\MovieCatalog\Model\MovieApiRepository"/>
     <type name="Aislan\MovieCatalog\Console\Command\UpdateMovies">
         <arguments>
             <argument name="name" xsi:type="string">catalog:movies:update</argument>
