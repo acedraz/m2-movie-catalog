@@ -60,4 +60,10 @@ interface GenreRepositoryInterface
      * @return mixed
      */
     public function deleteById($id);
+
+    /**
+     * @param $apiId
+     * @return mixed
+     */
+    public function getGenreByApiId($apiId);
 }

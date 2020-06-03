@@ -148,18 +148,12 @@ class UpdateMovies extends Command
         }
         $response = json_decode($collectionResponse,true);
         foreach ($response['genres'] as $genre) {
-            $filters[] = $this->filterBuilder->create()->setField('api_id')
-                ->setValue($genre['id'])
-                ->create();
-            $searchCriteria = $this->searchCriteriaBuilder->create()->addFilters($filters)->create();
-            $list = $this->genreRepository->getList($searchCriteria);
-            $items = $list->getItems();
-            if (empty($items)) {
+            $items = $this->genreRepository->getGenreByApiId($genre['id']);
+            if (empty($items->getItems())) {
                 $this->genreFactory->create()
                     ->setData(['api_id' => $genre['id'],'name' => $genre['name']])
                     ->save();
             }
-            unset($filters);
         }
         return true;
     }

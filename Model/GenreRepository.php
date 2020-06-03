@@ -25,6 +25,8 @@ namespace Aislan\MovieCatalog\Model;
 
 use Aislan\MovieCatalog\Api\Data\GenreSearchResultInterfaceFactory;
 use Aislan\MovieCatalog\Api\GenreRepositoryInterface;
+use Magento\Framework\Api\FilterBuilderFactory;
+use Magento\Framework\Api\SearchCriteriaBuilderFactory;
 use Magento\Framework\Api\SearchCriteriaInterface;
 use Magento\Framework\Exception\NoSuchEntityException;
 
@@ -48,14 +50,28 @@ class GenreRepository extends AbstractGenreRepository implements GenreRepository
      */
     private $genreCollectionFactory;
 
+    /**
+     * @var FilterBuilderFactory
+     */
+    private $filterBuilderFactory;
+
+    /**
+     * @var SearchCriteriaBuilderFactory
+     */
+    private $searchCriteriaBuilderFactory;
+
     public function __construct(
         GenreFactory $genreFactory,
         GenreSearchResultInterfaceFactory $searchResultFactory,
-        ResourceModel\Genre\CollectionFactory $genreCollectionFactory
+        ResourceModel\Genre\CollectionFactory $genreCollectionFactory,
+        FilterBuilderFactory $filterBuilderFactory,
+        SearchCriteriaBuilderFactory $searchCriteriaBuilderFactory
     ) {
         $this->genreFactory = $genreFactory;
         $this->searchResultFactory = $searchResultFactory;
         $this->genreCollectionFactory = $genreCollectionFactory;
+        $this->filterBuilderFactory = $filterBuilderFactory;
+        $this->searchCriteriaBuilderFactory = $searchCriteriaBuilderFactory;
     }
 
     /**
@@ -115,5 +131,18 @@ class GenreRepository extends AbstractGenreRepository implements GenreRepository
         $this->addPagingToCollection($searchCriteria, $collection);
         $collection->load();
         return $this->buildSearchResult($searchCriteria, $collection, $searchResults);
+    }
+
+    /**
+     * @param $apiId
+     * @return \Aislan\MovieCatalog\Api\Data\GenreInterface
+     */
+    public function getGenreByApiId($apiId)
+    {
+        $filters[] = $this->filterBuilderFactory->create()->setField('api_id')
+            ->setValue($apiId)
+            ->create();
+        $searchCriteria = $this->searchCriteriaBuilderFactory->create()->addFilters($filters)->create();
+        return $this->getList($searchCriteria);
     }
 }
