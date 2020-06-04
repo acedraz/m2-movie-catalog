@@ -57,4 +57,11 @@
             </argument>
         </arguments>
     </type>
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="aislan_moviecatalog_movie_entity_listing_data_source" xsi:type="string">Aislan\MovieCatalog\Model\ResourceModel\MovieEntity\Grid\Collection</item>
+            </argument>
+        </arguments>
+    </type>
 </config>

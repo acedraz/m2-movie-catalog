@@ -29,7 +29,7 @@
             module="Aislan_MovieCatalog"
             parent="Magento_Catalog::inventory"
             sortOrder="30"
-            action="catalog_movies/movies/"
+            action="catalog_movies/movie/"
             resource="Aislan_MovieCatalog::catalog_movies"/>
     </menu>
 </config>

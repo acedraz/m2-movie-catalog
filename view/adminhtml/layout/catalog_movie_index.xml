@@ -23,18 +23,8 @@
 <page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
     <update handle="styles"/>
     <body>
-        <referenceBlock name="menu">
-            <action method="setActive">
-                <argument name="itemId" xsi:type="string">Aislan_MovieCatalog::catalog_movies</argument>
-            </action>
-        </referenceBlock>
-        <referenceBlock name="page.title">
-            <action method="setTitleClass">
-                <argument name="class" xsi:type="string">complex</argument>
-            </action>
-        </referenceBlock>
         <referenceContainer name="content">
-            <block class="Aislan\MovieCatalog\Block\Adminhtml\Movies" name="movies_list"/>
+            <uiComponent name="aislan_moviecatalog_movie_entity_listing"/>
         </referenceContainer>
     </body>
 </page>
