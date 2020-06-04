@@ -1,0 +1,153 @@
+<?xml version="1.0" ?>
+<!--
+/**
+ * Aislan
+ *
+ * NOTICE OF LICENSE
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to aislan.cedraz@gmail.com.br for more information.
+ *
+ * @module      Aislan Movie Catalog
+ * @category    Aislan
+ * @package     Aislan_MovieCatalog
+ *
+ * @copyright   Copyright (c) 2020 Aislan.
+ *
+ * @author      Aislan Core Team <aislan.cedraz@gmail.com.br>
+ */
+-->
+<listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">aislan_moviecatalog_movie_api_listing.aislan_moviecatalog_movie_api_listing_data_source</item>
+        </item>
+    </argument>
+    <settings>
+        <spinner>aislan_moviecatalog_movie_api_columns</spinner>
+        <deps>
+            <dep>aislan_moviecatalog_movie_api_listing.aislan_moviecatalog_movie_api_listing_data_source</dep>
+        </deps>
+        <buttons>
+            <button name="insert">
+                <url path="*/*/insert"/>
+                <class>primary</class>
+                <label translate="true">Inserir</label>
+            </button>
+        </buttons>
+    </settings>
+    <dataSource component="Magento_Ui/js/grid/provider" name="aislan_moviecatalog_movie_api_listing_data_source">
+        <settings>
+            <updateUrl path="mui/index/render"/>
+        </settings>
+        <aclResource>Aislan_MovieCatalog::catalog_movies</aclResource>
+        <dataProvider class="Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider" name="aislan_moviecatalog_movie_api_listing_data_source">
+            <settings>
+                <requestFieldName>id</requestFieldName>
+                <primaryFieldName>entity_id</primaryFieldName>
+            </settings>
+        </dataProvider>
+    </dataSource>
+    <listingToolbar name="listing_top">
+        <settings>
+            <sticky>true</sticky>
+        </settings>
+        <bookmark name="bookmarks"/>
+        <columnsControls name="columns_controls"/>
+        <filters name="listing_filters"/>
+        <paging name="listing_paging"/>
+    </listingToolbar>
+    <columns name="aislan_moviecatalog_movie_api_columns">
+        <selectionsColumn name="ids">
+            <settings>
+                <indexField>entity_id</indexField>
+            </settings>
+        </selectionsColumn>
+        <column name="entity_id" sortOrder="20">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">ID</label>
+            </settings>
+        </column>
+        <column name="api_id" sortOrder="30">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">Api Id</label>
+            </settings>
+        </column>
+        <column name="poster_path" class="Aislan\MovieCatalog\Ui\Component\Listing\Column\Thumbnail" component="Magento_Ui/js/grid/columns/thumbnail" sortOrder="40">
+            <settings>
+                <label translate="true">Image</label>
+            </settings>
+        </column>
+        <column name="original_title" sortOrder="50">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">Original Title</label>
+            </settings>
+        </column>
+        <column name="title" sortOrder="60">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">Title</label>
+            </settings>
+        </column>
+        <column name="overview" sortOrder="70">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">Overview</label>
+            </settings>
+        </column>
+        <column name="original_language" sortOrder="80">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">Language</label>
+            </settings>
+        </column>
+        <column name="popularity" sortOrder="90">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">Popularity</label>
+            </settings>
+        </column>
+        <column name="vote_count" sortOrder="100">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">Vote Count</label>
+            </settings>
+        </column>
+        <column name="vote_average" sortOrder="110">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">Vote Average</label>
+            </settings>
+        </column>
+        <column name="adult" sortOrder="120">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">Adult</label>
+            </settings>
+        </column>
+        <column name="video" sortOrder="130">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">Video</label>
+            </settings>
+        </column>
+        <column name="backdrop_path" class="Aislan\MovieCatalog\Ui\Component\Listing\Column\Thumbnail" component="Magento_Ui/js/grid/columns/thumbnail" sortOrder="140">
+            <settings>
+                <label translate="true">Backdrop</label>
+            </settings>
+        </column>
+        <column name="release_date" sortOrder="150">
+            <settings>
+                <filter>dateRange</filter>
+                <dataType>date</dataType>
+                <label translate="true">Released</label>
+            </settings>
+        </column>
+    </columns>
+</listing>

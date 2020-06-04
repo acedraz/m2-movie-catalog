@@ -27,7 +27,7 @@ use Magento\Backend\App\Action\Context;
 use Magento\Framework\Registry;
 use Magento\Backend\App\Action;
 
-abstract class Index extends Action
+abstract class Movie extends Action
 {
     const ADMIN_RESOURCE = 'Aislan_MovieCatalog::catalog_movies';
 

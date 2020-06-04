@@ -27,7 +27,7 @@
         </item>
     </argument>
     <settings>
-        <spinner>aislan_moviecatalog_mosaic_columns</spinner>
+        <spinner>aislan_moviecatalog_movie_columns</spinner>
         <deps>
             <dep>aislan_moviecatalog_movie_entity_listing.aislan_moviecatalog_movie_entity_listing_data_source</dep>
         </deps>
@@ -60,21 +60,12 @@
         <filters name="listing_filters"/>
         <paging name="listing_paging"/>
     </listingToolbar>
-    <columns name="aislan_moviecatalog_movie_entity_columns">
+    <columns name="aislan_moviecatalog_movie_columns">
         <settings>
-            <editorConfig>
-                <param name="selectProvider" xsi:type="string">aislan_moviecatalog_movie_entity_listing.aislan_moviecatalog_movie_entity_listing.aislan_moviecatalog_movie_entity_columns.ids</param>
-                <param name="enabled" xsi:type="boolean">true</param>
-                <param name="indexField" xsi:type="string">entity_id</param>
-                <param name="clientConfig" xsi:type="array">
-                    <item name="saveUrl" path="aislan_moviecatalog/catalog_movies/inlineEdit" xsi:type="url"/>
-                    <item name="validateBeforeSave" xsi:type="boolean">false</item>
-                </param>
-            </editorConfig>
             <childDefaults>
                 <param name="fieldAction" xsi:type="array">
-                    <item name="provider" xsi:type="string">aislan_moviecatalog_movie_entity_listing.aislan_moviecatalog_movie_entity_listing.aislan_moviecatalog_mosaic_columns_editor</item>
-                    <item name="target" xsi:type="string">startEdit</item>
+                    <item name="provider" xsi:type="string">aislan_moviecatalog_movie_listing.aislan_moviecatalog_movie_listing.aislan_moviecatalog_movie_columns_delete</item>
+                    <item name="target" xsi:type="string">startDelete</item>
                     <item name="params" xsi:type="array">
                         <item name="0" xsi:type="string">${ $.$data.rowIndex }</item>
                         <item name="1" xsi:type="boolean">true</item>
@@ -87,17 +78,10 @@
                 <indexField>entity_id</indexField>
             </settings>
         </selectionsColumn>
-        <column name="entity_id" sortOrder="10">
-            <settings>
-                <filter>textRange</filter>
-                <label translate="true">ID</label>
-                <sorting>asc</sorting>
-            </settings>
-        </column>
-        <column name="title" sortOrder="20">
+        <column name="name" sortOrder="20">
             <settings>
                 <filter>text</filter>
-                <label translate="true">title</label>
+                <label translate="true">Name</label>
                 <editor>
                     <editorType>text</editorType>
                     <validation>
@@ -106,7 +90,7 @@
                 </editor>
             </settings>
         </column>
-        <column name="movie_api_id" sortOrder="30">
+        <column name="code" sortOrder="30">
             <settings>
                 <filter>text</filter>
                 <label translate="true">Code</label>

@@ -61,7 +61,20 @@
         <arguments>
             <argument name="collections" xsi:type="array">
                 <item name="aislan_moviecatalog_movie_entity_listing_data_source" xsi:type="string">Aislan\MovieCatalog\Model\ResourceModel\MovieEntity\Grid\Collection</item>
+                <item name="aislan_moviecatalog_movie_api_listing_data_source" xsi:type="string">Aislan\MovieCatalog\Model\ResourceModel\MovieApi\Grid\Collection</item>
             </argument>
         </arguments>
     </type>
+    <virtualType name="Aislan\MovieCatalog\Model\ResourceModel\MovieEntity\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">catalog_movie_entity</argument>
+            <argument name="resourceModel" xsi:type="string">Aislan\MovieCatalog\Model\ResourceModel\MovieEntity\Collection</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="Aislan\MovieCatalog\Model\ResourceModel\MovieApi\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">catalog_movie_api</argument>
+            <argument name="resourceModel" xsi:type="string">Aislan\MovieCatalog\Model\ResourceModel\MovieApi\Collection</argument>
+        </arguments>
+    </virtualType>
 </config>
