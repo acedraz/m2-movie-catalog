@@ -125,13 +125,13 @@ class MassSave extends Movie implements HttpPostActionInterface
         }
         if ($movieSaved) {
             $this->messageManager->addSuccessMessage(
-                __('A total of %1 record(s) have been saved.', $movieSaved)
+                __('A total of %1 record(s) have been added.', $movieSaved)
             );
         }
         if ($movieSavedError) {
             $this->messageManager->addErrorMessage(
                 __(
-                    'A total of %1 record(s) haven\'t been saved. Please see server logs for more details.',
+                    'A total of %1 record(s) haven\'t been added. Please see server logs for more details.',
                     $movieSavedError
                 )
             );

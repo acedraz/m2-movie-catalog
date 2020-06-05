@@ -65,12 +65,12 @@
             <action name="save">
                 <settings>
                     <confirm>
-                        <message translate="true">Save selected movies?</message>
-                        <title translate="true">Save Movies</title>
+                        <message translate="true">Add selected movies?</message>
+                        <title translate="true">Add Movies</title>
                     </confirm>
                     <url path="catalog_movies/movie/massSave"/>
                     <type>save</type>
-                    <label translate="true">Save</label>
+                    <label translate="true">Add</label>
                 </settings>
             </action>
         </massaction>
