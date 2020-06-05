@@ -20,15 +20,10 @@
  * @author      Aislan Core Team <aislan.cedraz@gmail.com.br>
  */
 -->
-<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
-    <default>
-        <movies_integration>
-            <general>
-                <enable>1</enable>
-                <api_url>https://api.themoviedb.org/3/</api_url>
-                <attempts>10</attempts>
-                <cron>0 0 0 * * ?</cron>
-            </general>
-        </movies_integration>
-    </default>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Cron:etc/crontab.xsd">
+    <group id="default">
+        <job name="update_movies" instance="Aislan\MovieCatalog\Cron\UpdateMovies" method="execute">
+            <config_path>movies_integration/general/cron</config_path>
+        </job>
+    </group>
 </config>
