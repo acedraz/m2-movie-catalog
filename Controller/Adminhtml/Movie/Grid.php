@@ -67,14 +67,13 @@ class Grid extends Movie
         $this->resultRawFactory = $resultRawFactory;
         $this->layoutFactory = $layoutFactory;
         $this->movieFactory = $movieFactory;
-
         parent::__construct($context, $registry);
     }
 
     /**
      * Initialize requested mosaic and put it into registry.
      *
-     * @return \Avanti\MosaicManager\Model\MovieFactory | false
+     * @return \Aislan\MovieCatalog\Model\MovieEntityFactory | false
      */
     protected function initMovie()
     {
@@ -92,7 +91,7 @@ class Grid extends Movie
 
     /**
      * Grid Action
-     * Display list of products related to current category.
+     * Display list of movies
      *
      * @return Raw
      */
@@ -103,7 +102,7 @@ class Grid extends Movie
             /** @var Redirect $resultRedirect */
             $resultRedirect = $this->resultRedirectFactory->create();
 
-            return $resultRedirect->setPath('aislan_moviecatalog/*/', ['_current' => true, 'id' => null]);
+            return $resultRedirect->setPath('movie_catalog/*/', ['_current' => true, 'id' => null]);
         }
 
         /** @var Raw $resultRaw */

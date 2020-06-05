@@ -40,7 +40,7 @@ use Psr\Log\LoggerInterface;
 /**
  * Class massSave
  */
-class massSave extends Movie implements HttpPostActionInterface
+class MassSave extends Movie implements HttpPostActionInterface
 {
 
     /**

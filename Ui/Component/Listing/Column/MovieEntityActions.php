@@ -53,8 +53,8 @@ class MovieEntityActions extends Column
                             ),
                             'label' => __('Delete'),
                             'confirm' => [
-                                'title' => __('Delete ${ $.$data.name }'),
-                                'message' => __('Are you sure you wan\'t to delete selected movie?'),
+                                'title' => __('Delete ${ $.$data.original_title }'),
+                                'message' => __('Are you sure you want to delete this movie?'),
                             ],
                         ],
                     ];

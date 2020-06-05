@@ -66,4 +66,10 @@ interface MovieEntityRepositoryInterface
      * @return mixed
      */
     public function getMovieEntityByApiId($movieApiId);
+
+    /**
+     * @param $movieEntityId
+     * @return mixed
+     */
+    public function getMovieEntityById($movieEntityId);
 }

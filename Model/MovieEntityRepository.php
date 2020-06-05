@@ -144,12 +144,25 @@ class MovieEntityRepository extends AbstractMovieEntityRepository implements Mov
 
 
     /**
+     * @param $movieEntityApiId
+     * @return \Aislan\MovieCatalog\Api\Data\MovieEntitySearchResultInterface|mixed
+     */
+    public function getMovieEntityByApiId($movieEntityApiId)
+    {
+        $filters[] = $this->filterBuilderFactory->create()->setField('movie_api_id')
+            ->setValue($movieEntityApiId)
+            ->create();
+        $searchCriteria = $this->searchCriteriaBuilderFactory->create()->addFilters($filters)->create();
+        return $this->getList($searchCriteria);
+    }
+
+    /**
      * @param $movieEntityId
      * @return \Aislan\MovieCatalog\Api\Data\MovieEntitySearchResultInterface|mixed
      */
-    public function getMovieEntityByApiId($movieEntityId)
+    public function getMovieEntityById($movieEntityId)
     {
-        $filters[] = $this->filterBuilderFactory->create()->setField('movie_api_id')
+        $filters[] = $this->filterBuilderFactory->create()->setField('entity_id')
             ->setValue($movieEntityId)
             ->create();
         $searchCriteria = $this->searchCriteriaBuilderFactory->create()->addFilters($filters)->create();
