@@ -32,21 +32,22 @@
             <dep>aislan_moviecatalog_movie_api_listing.aislan_moviecatalog_movie_api_listing_data_source</dep>
         </deps>
         <buttons>
-            <button name="insert">
-                <url path="*/*/insert"/>
-                <class>primary</class>
-                <label translate="true">Inserir</label>
-            </button>
+            <button class="Aislan\MovieCatalog\Block\Adminhtml\Movie\Api\BackButton" name="back"/>
         </buttons>
     </settings>
     <dataSource component="Magento_Ui/js/grid/provider" name="aislan_moviecatalog_movie_api_listing_data_source">
+        <argument name="data" xsi:type="array">
+            <item name="js_config" xsi:type="array">
+                <item name="component" xsi:type="string">Magento_Ui/js/form/provider</item>
+            </item>
+        </argument>
         <settings>
             <updateUrl path="mui/index/render"/>
         </settings>
         <aclResource>Aislan_MovieCatalog::catalog_movies</aclResource>
         <dataProvider class="Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider" name="aislan_moviecatalog_movie_api_listing_data_source">
             <settings>
-                <requestFieldName>id</requestFieldName>
+                <requestFieldName>entity_id</requestFieldName>
                 <primaryFieldName>entity_id</primaryFieldName>
             </settings>
         </dataProvider>
@@ -58,6 +59,21 @@
         <bookmark name="bookmarks"/>
         <columnsControls name="columns_controls"/>
         <filters name="listing_filters"/>
+        <massaction name="listing_massaction"
+                    component="Magento_Ui/js/grid/tree-massactions"
+                    class="\Aislan\MovieCatalog\Ui\Component\Movie\MassAction">
+            <action name="save">
+                <settings>
+                    <confirm>
+                        <message translate="true">Save selected movies?</message>
+                        <title translate="true">Save Movies</title>
+                    </confirm>
+                    <url path="catalog_movies/movie/massSave"/>
+                    <type>save</type>
+                    <label translate="true">Save</label>
+                </settings>
+            </action>
+        </massaction>
         <paging name="listing_paging"/>
     </listingToolbar>
     <columns name="aislan_moviecatalog_movie_api_columns">

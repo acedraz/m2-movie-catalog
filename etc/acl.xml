@@ -27,6 +27,8 @@
                 <resource id="Magento_Catalog::catalog">
                     <resource id="Magento_Catalog::catalog_inventory">
                         <resource id="Aislan_MovieCatalog::catalog_movies" title="Movies" translate="title" sortOrder="30"/>
+                        <resource id="Aislan_MovieCatalog::movies_save" title="Movies Save" translate="title" sortOrder="40"/>
+                        <resource id="Aislan_MovieCatalog::movies_delete" title="Movies Delete" translate="title" sortOrder="50"/>
                     </resource>
                 </resource>
             </resource>

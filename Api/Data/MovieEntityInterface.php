@@ -33,4 +33,9 @@ interface MovieEntityInterface
      * @return mixed
      */
     public function getIdentities();
+
+    /**
+     * @return mixed
+     */
+    public function getEntries();
 }

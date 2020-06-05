@@ -38,6 +38,32 @@ class MovieEntity extends AbstractModel implements MovieEntityInterface
 
     const ID = 'entity_id';
 
+    const POPULARITY = 'popularity';
+
+    const VOTE_COUNT = 'vote_count';
+
+    const VIDEO  = 'video';
+
+    const POSTER_PATH = 'poster_path';
+
+    const API_ID = 'api_id';
+
+    const ADULT = 'adult';
+
+    const BACKDROP_PATH = 'backdrop_path';
+
+    const ORIGINAL_LANGUAGE = 'original_language';
+
+    const ORIGINAL_TITLE = 'original_title';
+
+    const TITLE = 'title';
+
+    const VOTE_AVERAGE = 'vote_average';
+
+    const OVERVIEW = 'overview';
+
+    const RELEASE_DATE = 'release_date';
+
     protected $_cacheTag = self::CACHE_TAG;
 
     protected $_eventPrefix = self::CACHE_TAG;
@@ -53,5 +79,27 @@ class MovieEntity extends AbstractModel implements MovieEntityInterface
     public function getIdentities()
     {
         return [self::CACHE_TAG . '_' . $this->getId()];
+    }
+
+    /**
+     * @return string[]
+     */
+    public function getEntries()
+    {
+        return [
+            self::ID,
+            self::POPULARITY,
+            self::VOTE_COUNT,
+            self::VIDEO,
+            self::POSTER_PATH,
+            self::API_ID,
+            self::ADULT,
+            self::BACKDROP_PATH,
+            self::ORIGINAL_LANGUAGE,
+            self::ORIGINAL_TITLE,
+            self::VOTE_AVERAGE,
+            self::OVERVIEW,
+            self::RELEASE_DATE
+        ];
     }
 }

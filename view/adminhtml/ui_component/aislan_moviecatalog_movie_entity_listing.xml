@@ -78,28 +78,87 @@
                 <indexField>entity_id</indexField>
             </settings>
         </selectionsColumn>
-        <column name="name" sortOrder="20">
+        <column name="entity_id" sortOrder="20">
             <settings>
                 <filter>text</filter>
-                <label translate="true">Name</label>
-                <editor>
-                    <editorType>text</editorType>
-                    <validation>
-                        <rule name="required-entry" xsi:type="boolean">true</rule>
-                    </validation>
-                </editor>
+                <label translate="true">ID</label>
             </settings>
         </column>
-        <column name="code" sortOrder="30">
+        <column name="api_id" sortOrder="30">
             <settings>
                 <filter>text</filter>
-                <label translate="true">Code</label>
-                <editor>
-                    <editorType>text</editorType>
-                    <validation>
-                        <rule name="required-entry" xsi:type="boolean">true</rule>
-                    </validation>
-                </editor>
+                <label translate="true">Api Id</label>
+            </settings>
+        </column>
+        <column name="poster_path" class="Aislan\MovieCatalog\Ui\Component\Listing\Column\Thumbnail" component="Magento_Ui/js/grid/columns/thumbnail" sortOrder="40">
+            <settings>
+                <label translate="true">Image</label>
+            </settings>
+        </column>
+        <column name="original_title" sortOrder="50">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">Original Title</label>
+            </settings>
+        </column>
+        <column name="title" sortOrder="60">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">Title</label>
+            </settings>
+        </column>
+        <column name="overview" sortOrder="70">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">Overview</label>
+            </settings>
+        </column>
+        <column name="original_language" sortOrder="80">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">Language</label>
+            </settings>
+        </column>
+        <column name="popularity" sortOrder="90">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">Popularity</label>
+            </settings>
+        </column>
+        <column name="vote_count" sortOrder="100">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">Vote Count</label>
+            </settings>
+        </column>
+        <column name="vote_average" sortOrder="110">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">Vote Average</label>
+            </settings>
+        </column>
+        <column name="adult" sortOrder="120">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">Adult</label>
+            </settings>
+        </column>
+        <column name="video" sortOrder="130">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">Video</label>
+            </settings>
+        </column>
+        <column name="backdrop_path" class="Aislan\MovieCatalog\Ui\Component\Listing\Column\Thumbnail" component="Magento_Ui/js/grid/columns/thumbnail" sortOrder="140">
+            <settings>
+                <label translate="true">Backdrop</label>
+            </settings>
+        </column>
+        <column name="release_date" sortOrder="150">
+            <settings>
+                <filter>dateRange</filter>
+                <dataType>date</dataType>
+                <label translate="true">Released</label>
             </settings>
         </column>
         <actionsColumn class="Aislan\MovieCatalog\Ui\Component\Listing\Column\MovieEntityActions" name="actions">

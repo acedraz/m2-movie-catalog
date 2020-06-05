@@ -26,22 +26,22 @@ namespace Aislan\MovieCatalog\Api;
 use Magento\Framework\Api\SearchCriteriaInterface;
 
 /**
- * Interface MovieGenreRepositoryInterface
+ * Interface MovieEntityRepositoryInterface
  * @package Aislan\MovieCatalog\Api
  */
 interface MovieEntityRepositoryInterface
 {
     /**
-     * @param \Aislan\MovieCatalog\Api\Data\MovieEntityInterface $movieGenre
+     * @param \Aislan\MovieCatalog\Api\Data\MovieEntityInterface $movieEntity
      * @return \Aislan\MovieCatalog\Api\Data\MovieEntityInterface
      */
-    public function save(\Aislan\MovieCatalog\Api\Data\MovieEntityInterface $movieGenre);
+    public function save(\Aislan\MovieCatalog\Api\Data\MovieEntityInterface $movieEntity);
 
     /**
-     * @param \Aislan\MovieCatalog\Api\Data\MovieEntityInterface $movieGenre
+     * @param \Aislan\MovieCatalog\Api\Data\MovieEntityInterface $movieEntity
      * @return \Aislan\MovieCatalog\Api\Data\MovieEntityInterface
      */
-    public function delete(\Aislan\MovieCatalog\Api\Data\MovieEntityInterface $movieGenre);
+    public function delete(\Aislan\MovieCatalog\Api\Data\MovieEntityInterface $movieEntity);
 
     /**
      * @param SearchCriteriaInterface $criteria

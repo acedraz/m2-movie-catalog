@@ -23,7 +23,7 @@ declare(strict_types=1);
 
 namespace Aislan\MovieCatalog\Model;
 
-use Aislan\MovieCatalog\Api\Data\MovieEnitySearchResultInterfaceFactory;
+use Aislan\MovieCatalog\Api\Data\MovieEntitySearchResultInterfaceFactory;
 use Aislan\MovieCatalog\Api\Data\MovieEntityInterface;
 use Aislan\MovieCatalog\Api\MovieEntityRepositoryInterface;
 use Magento\Framework\Api\FilterBuilderFactory;
