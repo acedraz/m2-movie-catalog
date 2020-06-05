@@ -79,8 +79,8 @@
         <settings>
             <childDefaults>
                 <param name="fieldAction" xsi:type="array">
-                    <item name="provider" xsi:type="string">aislan_moviecatalog_movie_listing.aislan_moviecatalog_movie_listing.aislan_moviecatalog_movie_columns_delete</item>
-                    <item name="target" xsi:type="string">startDelete</item>
+                    <item name="provider" xsi:type="string">aislan_moviecatalog_movie_listing.aislan_moviecatalog_movie_listing.aislan_moviecatalog_movie_columns.actions</item>
+                    <item name="target" xsi:type="string">applyAction</item>
                     <item name="params" xsi:type="array">
                         <item name="0" xsi:type="string">${ $.$data.rowIndex }</item>
                         <item name="1" xsi:type="boolean">true</item>
@@ -88,95 +88,96 @@
                 </param>
             </childDefaults>
         </settings>
-        <selectionsColumn name="ids">
+        <selectionsColumn name="ids" sortOrder="0">
             <settings>
                 <indexField>entity_id</indexField>
             </settings>
         </selectionsColumn>
-        <column name="entity_id" sortOrder="20">
+        <column name="entity_id" sortOrder="10">
             <settings>
-                <filter>text</filter>
+                <filter>textRange</filter>
                 <label translate="true">ID</label>
+                <sorting>asc</sorting>
             </settings>
         </column>
-        <column name="api_id" sortOrder="30">
+        <column name="api_id" sortOrder="20">
             <settings>
                 <filter>text</filter>
                 <label translate="true">Api Id</label>
             </settings>
         </column>
-        <column name="poster_path" class="Aislan\MovieCatalog\Ui\Component\Listing\Column\Thumbnail" component="Magento_Ui/js/grid/columns/thumbnail" sortOrder="40">
+        <column name="poster_path" class="Aislan\MovieCatalog\Ui\Component\Listing\Column\Thumbnail" component="Magento_Ui/js/grid/columns/thumbnail" sortOrder="30">
             <settings>
                 <label translate="true">Image</label>
             </settings>
         </column>
-        <column name="original_title" sortOrder="50">
+        <column name="original_title" sortOrder="40">
             <settings>
                 <filter>text</filter>
                 <label translate="true">Original Title</label>
             </settings>
         </column>
-        <column name="title" sortOrder="60">
+        <column name="title" sortOrder="50">
             <settings>
                 <filter>text</filter>
                 <label translate="true">Title</label>
             </settings>
         </column>
-        <column name="overview" sortOrder="70">
+        <column name="overview" sortOrder="60">
             <settings>
                 <filter>text</filter>
                 <label translate="true">Overview</label>
             </settings>
         </column>
-        <column name="original_language" sortOrder="80">
+        <column name="original_language" sortOrder="70">
             <settings>
                 <filter>text</filter>
                 <label translate="true">Language</label>
             </settings>
         </column>
-        <column name="popularity" sortOrder="90">
+        <column name="popularity" sortOrder="80">
             <settings>
                 <filter>text</filter>
                 <label translate="true">Popularity</label>
             </settings>
         </column>
-        <column name="vote_count" sortOrder="100">
+        <column name="vote_count" sortOrder="90">
             <settings>
                 <filter>text</filter>
                 <label translate="true">Vote Count</label>
             </settings>
         </column>
-        <column name="vote_average" sortOrder="110">
+        <column name="vote_average" sortOrder="100">
             <settings>
                 <filter>text</filter>
                 <label translate="true">Vote Average</label>
             </settings>
         </column>
-        <column name="adult" sortOrder="120">
+        <column name="adult" sortOrder="110">
             <settings>
                 <filter>text</filter>
                 <label translate="true">Adult</label>
             </settings>
         </column>
-        <column name="video" sortOrder="130">
+        <column name="video" sortOrder="120">
             <settings>
                 <filter>text</filter>
                 <label translate="true">Video</label>
             </settings>
         </column>
-        <column name="backdrop_path" class="Aislan\MovieCatalog\Ui\Component\Listing\Column\Thumbnail" component="Magento_Ui/js/grid/columns/thumbnail" sortOrder="140">
+        <column name="backdrop_path" class="Aislan\MovieCatalog\Ui\Component\Listing\Column\Thumbnail" component="Magento_Ui/js/grid/columns/thumbnail" sortOrder="130">
             <settings>
                 <label translate="true">Backdrop</label>
             </settings>
         </column>
-        <column name="release_date" sortOrder="150">
+        <column name="release_date" sortOrder="140">
             <settings>
                 <filter>dateRange</filter>
                 <dataType>date</dataType>
                 <label translate="true">Released</label>
             </settings>
         </column>
-        <actionsColumn class="Aislan\MovieCatalog\Ui\Component\Listing\Column\MovieEntityActions" name="actions">
+        <actionsColumn class="Aislan\MovieCatalog\Ui\Component\Listing\Column\MovieEntityActions" name="actions" sortOrder="150">
             <settings>
                 <indexField>entity_id</indexField>
                 <resizeEnabled>false</resizeEnabled>

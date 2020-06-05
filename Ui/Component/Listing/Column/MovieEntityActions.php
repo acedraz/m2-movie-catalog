@@ -11,6 +11,8 @@ class MovieEntityActions extends Column
 {
     const URL_PATH_DELETE = 'catalog_movies/movie/delete';
 
+    const URL_PATH_EDIT = 'catalog_movies/movie/edit';
+
     protected $urlBuilder;
 
     /**
@@ -56,6 +58,15 @@ class MovieEntityActions extends Column
                                 'title' => __('Delete ${ $.$data.original_title }'),
                                 'message' => __('Are you sure you want to delete this movie?'),
                             ],
+                        ],
+                        'edit' => [
+                            'href' => $this->urlBuilder->getUrl(
+                                static::URL_PATH_EDIT,
+                                [
+                                    'entity_id' => $item['entity_id'],
+                                ]
+                            ),
+                            'label' => __('Edit'),
                         ],
                     ];
                 }
