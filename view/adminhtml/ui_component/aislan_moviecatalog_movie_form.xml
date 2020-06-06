@@ -1,0 +1,216 @@
+<?xml version="1.0" ?>
+<!--
+/**
+ * Aislan
+ *
+ * NOTICE OF LICENSE
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to aislan.cedraz@gmail.com.br for more information.
+ *
+ * @module      Aislan Movie Catalog
+ * @category    Aislan
+ * @package     Aislan_MovieCatalog
+ *
+ * @copyright   Copyright (c) 2020 Aislan.
+ *
+ * @author      Aislan Core Team <aislan.cedraz@gmail.com.br>
+ */
+-->
+<form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">aislan_moviecatalog_movie_form.movie_form_data_source</item>
+        </item>
+        <item name="label" translate="true" xsi:type="string">General Information</item>
+        <item name="template" xsi:type="string">templates/form/collapsible</item>
+    </argument>
+    <settings>
+        <buttons>
+            <button class="Aislan\MovieCatalog\Block\Adminhtml\Movie\Api\BackButton" name="back"/>
+            <button class="Aislan\MovieCatalog\Block\Adminhtml\Movie\Api\SaveButton" name="save"/>
+            <button class="Aislan\MovieCatalog\Block\Adminhtml\Movie\Api\SaveAndContinueButton" name="save_and_continue"/>
+        </buttons>
+        <namespace>aislan_moviecatalog_movie_form</namespace>
+        <dataScope>data</dataScope>
+        <deps>
+            <dep>aislan_moviecatalog_movie_form.movie_form_data_source</dep>
+        </deps>
+    </settings>
+    <dataSource name="movie_form_data_source">
+        <argument name="data" xsi:type="array">
+            <item name="js_config" xsi:type="array">
+                <item name="component" xsi:type="string">Magento_Ui/js/form/provider</item>
+            </item>
+        </argument>
+        <settings>
+            <submitUrl path="*/*/save"/>
+        </settings>
+        <dataProvider class="Aislan\MovieCatalog\Ui\DataProvider\Movie\DataProvider" name="movie_form_data_source">
+            <settings>
+                <requestFieldName>entity_id</requestFieldName>
+                <primaryFieldName>entity_id</primaryFieldName>
+            </settings>
+        </dataProvider>
+    </dataSource>
+    <fieldset name="general" sortOrder="10">
+        <settings>
+            <collapsible>false</collapsible>
+            <label>General</label>
+        </settings>
+        <field name="entity_id" formElement="hidden">
+            <settings>
+                <dataType>int</dataType>
+            </settings>
+        </field>
+        <field name="api_id" formElement="hidden">
+            <settings>
+                <dataType>int</dataType>
+            </settings>
+        </field>
+        <field name="original_title" sortOrder="30" formElement="input">
+            <settings>
+                <dataType>string</dataType>
+                <label translate="true">Original Title</label>
+            </settings>
+        </field>
+        <field name="title" sortOrder="40" formElement="input">
+            <settings>
+                <dataType>string</dataType>
+                <label translate="true">Title</label>
+            </settings>
+        </field>
+        <field name="overview" sortOrder="50" formElement="textarea">
+            <settings>
+                <dataType>string</dataType>
+                <label translate="true">Overview</label>
+            </settings>
+        </field>
+        <field formElement="checkbox" name="adult" sortOrder="60">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">adult</item>
+                </item>
+            </argument>
+            <settings>
+                <dataType>text</dataType>
+                <label translate="true">Adult</label>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">true</rule>
+                </validation>
+                <tooltip>
+                    <description translate="true">Have a sexual content</description>
+                </tooltip>
+            </settings>
+            <formElements>
+                <checkbox>
+                    <settings>
+                        <valueMap>
+                            <map name="false" xsi:type="string">0</map>
+                            <map name="true" xsi:type="string">1</map>
+                        </valueMap>
+                        <prefer>toggle</prefer>
+                    </settings>
+                </checkbox>
+            </formElements>
+        </field>
+        <field formElement="checkbox" name="video" sortOrder="60">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">video</item>
+                </item>
+            </argument>
+            <settings>
+                <dataType>text</dataType>
+                <label translate="true">Vídeo</label>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">true</rule>
+                </validation>
+            </settings>
+            <formElements>
+                <checkbox>
+                    <settings>
+                        <valueMap>
+                            <map name="false" xsi:type="string">0</map>
+                            <map name="true" xsi:type="string">1</map>
+                        </valueMap>
+                        <prefer>toggle</prefer>
+                    </settings>
+                </checkbox>
+            </formElements>
+        </field>
+        <field name="release_date" sortOrder="70" formElement="date">
+            <settings>
+                <dataType>string</dataType>
+                <label translate="true">Release Date</label>
+            </settings>
+        </field>
+        <field name="original_language" sortOrder="75" formElement="input">
+            <settings>
+                <dataType>string</dataType>
+                <label translate="true">Language</label>
+            </settings>
+        </field>
+        <field name="poster_path" sortOrder="80" formElement="input">
+            <settings>
+                <dataType>string</dataType>
+                <label translate="true">Poster Url</label>
+                <tooltip>
+                    <description translate="true">Whitout domain</description>
+                </tooltip>
+            </settings>
+        </field>
+        <field name="backdrop_path" sortOrder="90" formElement="input">
+            <settings>
+                <dataType>string</dataType>
+                <label translate="true">Backdrop Url</label>
+                <tooltip>
+                    <description translate="true">Whitout domain</description>
+                </tooltip>
+            </settings>
+        </field>
+    </fieldset>
+    <fieldset name="qualifiers" sortOrder="20">
+        <settings>
+            <label>Qualifiers</label>
+        </settings>
+        <field name="vote_count" sortOrder="30" formElement="input">
+            <settings>
+                <dataType>int</dataType>
+                <label translate="true">Vote Count</label>
+            </settings>
+        </field>
+        <field name="vote_count" sortOrder="30" formElement="input">
+            <settings>
+                <dataType>int</dataType>
+                <label translate="true">Vote Count</label>
+            </settings>
+        </field>
+        <field name="popularity" sortOrder="30" formElement="input">
+            <settings>
+                <dataType>float</dataType>
+                <label translate="true">Popularity</label>
+            </settings>
+        </field>
+        <field name="vote_average" sortOrder="30" formElement="input">
+            <settings>
+                <dataType>float</dataType>
+                <label translate="true">Vote Average</label>
+            </settings>
+        </field>
+    </fieldset>
+    <fieldset name="genre" sortOrder="20">
+        <settings>
+            <collapsible>false</collapsible>
+            <label>Genre</label>
+        </settings>
+        <container name="genre_grid" sortOrder="160">
+            <htmlContent name="html_content">
+                <block name="genre" class="Aislan\MovieCatalog\Block\Adminhtml\Movie\AssignGenre"/>
+            </htmlContent>
+        </container>
+    </fieldset>
+</form>

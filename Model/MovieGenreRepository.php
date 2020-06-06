@@ -142,17 +142,36 @@ class MovieGenreRepository extends AbstractMovieGenreRepository implements Movie
         return $this->buildSearchResult($searchCriteria, $collection, $searchResults);
     }
 
-
     /**
-     * @param $movieGenreId
+     * @param $movieApiId
      * @return \Aislan\MovieCatalog\Api\Data\MovieApiSearchResultInterface|mixed
      */
-    public function getMovieGenreByMovieApiId($movieGenreId)
+    public function getMovieGenreByMovieApiId($movieApiId)
     {
         $filters[] = $this->filterBuilderFactory->create()->setField('movie_api_id')
-            ->setValue($movieGenreId)
+            ->setValue($movieApiId)
             ->create();
         $searchCriteria = $this->searchCriteriaBuilderFactory->create()->addFilters($filters)->create();
         return $this->getList($searchCriteria);
+    }
+
+    /**
+     * @param $movieApiId
+     * @return \Aislan\MovieCatalog\Api\Data\MovieApiSearchResultInterface|mixed
+     */
+    public function getMovieGenreWithNameByMovieApiId($movieApiId)
+    {
+        $collection = $this->movieGenreCollectionFactory->create();
+        $searchResults = $this->searchResultFactory->create();
+        $collection->getSelect()->join('catalog_movie_genre as genre','main_table.genre_api_id = genre.api_id');
+        $filters[] = $this->filterBuilderFactory->create()->setField('movie_api_id')
+            ->setValue($movieApiId)
+            ->create();
+        $searchCriteria = $this->searchCriteriaBuilderFactory->create()->addFilters($filters)->create();
+        $this->addFiltersToCollection($searchCriteria, $collection);
+        $this->addSortOrdersToCollection($searchCriteria, $collection);
+        $this->addPagingToCollection($searchCriteria, $collection);
+        $collection->load();
+        return $this->buildSearchResult($searchCriteria, $collection, $searchResults);
     }
 }

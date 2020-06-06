@@ -23,20 +23,21 @@ declare(strict_types=1);
 
 namespace Aislan\MovieCatalog\Block\Adminhtml\Movie;
 
+use Aislan\MovieCatalog\Api\MovieGenreRepositoryInterface;
 use Magento\Framework\Registry;
 use Magento\Backend\Block\Template;
 use Magento\Backend\Block\Template\Context;
 use Magento\Framework\Json\EncoderInterface;
-use Aislan\MovieCatalog\Block\Adminhtml\Movie\Tab\Component;
+use Aislan\MovieCatalog\Block\Adminhtml\Movie\Tab\Genre;
 
-class AssignComponents extends Template
+class AssignGenre extends Template
 {
     /**
      * Block template.
      *
      * @var string
      */
-    protected $_template = 'Avanti_MosaicManager::mosaic/edit/assign_components.phtml';
+    protected $_template = 'Aislan_MovieCatalog::movie/edit/assign_genre.phtml';
 
     /**
      * @var Component
@@ -52,24 +53,31 @@ class AssignComponents extends Template
      * @var \Magento\Framework\Json\EncoderInterface
      */
     protected $jsonEncoder;
+    /**
+     * @var MovieGenreRepositoryInterface
+     */
+    private $movieGenreRepository;
 
     /**
      * AssignComponents constructor.
      *
-     * @param Context          $context
-     * @param Registry         $registry
+     * @param Context $context
+     * @param Registry $registry
      * @param EncoderInterface $jsonEncoder
-     * @param array            $data
+     * @param array $data
+     * @param MovieGenreRepositoryInterface $movieGenreRepository
      */
     public function __construct(
         Context $context,
         Registry $registry,
         EncoderInterface $jsonEncoder,
-        array $data = []
+        array $data = [],
+        MovieGenreRepositoryInterface $movieGenreRepository
     ) {
         $this->registry = $registry;
         $this->jsonEncoder = $jsonEncoder;
         parent::__construct($context, $data);
+        $this->movieGenreRepository = $movieGenreRepository;
     }
 
     /**
@@ -82,7 +90,7 @@ class AssignComponents extends Template
     public function getBlockGrid()
     {
         if (null === $this->blockGrid) {
-            $this->blockGrid = $this->getLayout()->createBlock(Component::class, 'avanti_mosaicmanager.mosaic.component.grid');
+            $this->blockGrid = $this->getLayout()->createBlock(Genre::class, 'aislan_moviecatalog.movieentity.genre.grid');
         }
 
         return $this->blockGrid;
@@ -101,23 +109,23 @@ class AssignComponents extends Template
     /**
      * @return string
      */
-    public function getComponentsJson()
+    public function getGenresJson()
     {
-        $components = $this->getMosaic()->getComponentsPosition();
-        if (!empty($components)) {
-            return $this->jsonEncoder->encode($components);
+        $movieEntity = $this->getMovie();
+        $genres = $this->movieGenreRepository->getMovieGenreWithNameByMovieApiId($movieEntity->getApiId());
+        if (!empty($genres)) {
+            return $this->jsonEncoder->encode($genres);
         }
-
         return '{}';
     }
 
     /**
-     * Retrieve current mosaic instance.
+     * Retrieve current movie instance.
      *
      * @return array|null
      */
-    public function getMosaic()
+    public function getMovie()
     {
-        return $this->registry->registry('aislan_moviecatalog_movie');
+        return $this->registry->registry('aislan_moviecatalog_movie_entity');
     }
 }

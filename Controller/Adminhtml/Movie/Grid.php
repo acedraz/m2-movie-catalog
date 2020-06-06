@@ -31,7 +31,7 @@ use Magento\Framework\Registry;
 use Magento\Framework\Controller\Result\RawFactory;
 use Magento\Framework\View\LayoutFactory;
 use Aislan\MovieCatalog\Model\MovieEntityFactory;
-use Aislan\MovieCatalog\Block\Adminhtml\Movie\Tab\Component as MovieComponentsGrid;
+use Aislan\MovieCatalog\Block\Adminhtml\Movie\Tab\Genre as MovieComponentsGrid;
 
 class Grid extends Movie
 {
@@ -110,7 +110,7 @@ class Grid extends Movie
         return $resultRaw->setContents(
             $this->layoutFactory->create()->createBlock(
                 MovieComponentsGrid::class,
-                'aislan_moviecatalog.movie.component.grid'
+                'aislan_moviecatalog.movie.genre.grid'
             )->toHtml()
         );
     }
