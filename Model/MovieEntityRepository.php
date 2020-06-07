@@ -149,7 +149,7 @@ class MovieEntityRepository extends AbstractMovieEntityRepository implements Mov
      */
     public function getMovieEntityByApiId($movieEntityApiId)
     {
-        $filters[] = $this->filterBuilderFactory->create()->setField('movie_api_id')
+        $filters[] = $this->filterBuilderFactory->create()->setField('api_id')
             ->setValue($movieEntityApiId)
             ->create();
         $searchCriteria = $this->searchCriteriaBuilderFactory->create()->addFilters($filters)->create();
