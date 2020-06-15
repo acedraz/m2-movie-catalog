@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Aislan
+ *
+ * NOTICE OF LICENSE
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to aislan.cedraz@gmail.com.br for more information.
+ *
+ * @module      Aislan Movie Catalog
+ * @category    Aislan
+ * @package     Aislan_MovieCatalog
+ *
+ * @copyright   Copyright (c) 2020 Aislan.
+ *
+ * @author      Aislan Core Team <aislan.cedraz@gmail.com.br>
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <css src="Aislan_MovieCatalog::css/main.css"/>
+    </head>
+    <body>
+    <referenceContainer name="content">
+        <block class="Aislan\MovieCatalog\Block\Movie\ListMovie" name="list_movies" template="Aislan_MovieCatalog::movie/list.phtml"/>
+    </referenceContainer>
+    </body>
+</page>

@@ -83,4 +83,12 @@ class System extends AbstractHelper
     {
         return (int)$this->getValue(Config::SYSTEM_MOVIEINTEGRATION_ATTEMPTS);
     }
+
+    /**
+     * @return int
+     */
+    public function getMoviesQtyRow() : int
+    {
+        return (int)$this->getValue(Config::SYSTEM_MOVIEINTEGRATION_EXIHIBITION_MOVIES_ROW_QTY);
+    }
 }

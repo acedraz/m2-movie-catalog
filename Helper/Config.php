@@ -29,10 +29,14 @@ namespace Aislan\MovieCatalog\Helper;
 class Config
 {
     const API_KEY = 'api_key';
+    const MOVIE_URL = 'catalog_movies/movie/view/';
+    const VIEW_URL = 'view/id/';
     const SYSTEM_MOVIEINTEGRATION_GENERAL = 'movies_integration/general/';
+    const SYSTEM_MOVIEINTEGRATION_EXIHIBITION = 'movies_integration/exhibition/';
     const SYSTEM_MOVIEINTEGRATION_ENABLE = self::SYSTEM_MOVIEINTEGRATION_GENERAL.'enable';
     const SYSTEM_MOVIEINTEGRATION_API_URL = self::SYSTEM_MOVIEINTEGRATION_GENERAL.'api_url';
     const SYSTEM_MOVIEINTEGRATION_API_KEY = self::SYSTEM_MOVIEINTEGRATION_GENERAL.self::API_KEY;
     const SYSTEM_MOVIEINTEGRATION_ATTEMPTS = self::SYSTEM_MOVIEINTEGRATION_GENERAL.'attempts';
     const SYSTEM_MOVIEINTEGRATION_API_CRON = self::SYSTEM_MOVIEINTEGRATION_GENERAL.'cron';
+    const SYSTEM_MOVIEINTEGRATION_EXIHIBITION_MOVIES_ROW_QTY = self::SYSTEM_MOVIEINTEGRATION_EXIHIBITION.'movies_row_qty';
 }

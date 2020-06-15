@@ -29,6 +29,9 @@
                 <attempts>10</attempts>
                 <cron>0 0 0 * * ?</cron>
             </general>
+            <exhibition>
+                <movies_row_qty>10</movies_row_qty>
+            </exhibition>
         </movies_integration>
     </default>
 </config>

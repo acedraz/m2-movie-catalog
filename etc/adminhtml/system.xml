@@ -62,6 +62,16 @@
                     </depends>
                 </field>
             </group>
+            <group id="exhibition" showInDefault="1" translate="label">
+                <label>Exhibition</label>
+                <field id="movies_row_qty" type="text" showInDefault="1" sortOrder="30" translate="label,comment" showInWebsite="1" showInStore="1">
+                    <label>Number of films per line</label>
+                    <validate>validate-number</validate>
+                    <depends>
+                        <field id="movies_integration/general/enable">1</field>
+                    </depends>
+                </field>
+            </group>
         </section>
     </system>
 </config>

@@ -1,0 +1,12 @@
+section div.header.first div.single_column {
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+section div.header div.single_column {
+    padding-left: 40px;
+    padding-right: 40px;
+}
+section.inner_content section.images {
+    display: flex;
+    flex-wrap: nowrap;
+}

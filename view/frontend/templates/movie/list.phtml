@@ -1,0 +1,66 @@
+<?php
+/**
+ * Aislan
+ *
+ * NOTICE OF LICENSE
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to aislan.cedraz@gmail.com.br for more information.
+ *
+ * @module      Aislan Movie Catalog
+ * @category    Aislan
+ * @package     Aislan_MovieCatalog
+ *
+ * @copyright   Copyright (c) 2020 Aislan.
+ *
+ * @author      Aislan Core Team <aislan.cedraz@gmail.com.br>
+ */
+
+/** @var  $block \Aislan\MovieCatalog\Block\Movie\ListMovie */
+?>
+<section class="inner_content no_pad">
+    <div class="column_wrapper">
+        <div class="content_wrapper no_bottom_pad wrap">
+
+            <div class="column">
+                <div class="column_header">
+                    <h2><?= __('List Movies')?></h2>
+                </div>
+                <?php foreach ($block->formatRowsCollection() as $row) : ?>
+                    <div id="popular_scroller" class="media discover scroller_wrap should_fade is_fading">
+                        <div class="column_content flex scroller loaded" style="">
+                            <?php foreach ($row as $movie) : ?>
+                                <div class="card style_1">
+                                    <div class="image">
+                                        <div class="wrapper">
+                                            <a class="image" href="<?= $block->getMovieUrl($movie->getEntityId()) ?>" title="<?= $movie->getOriginalTitle() ?>">
+                                                <img class="poster lazyload lazyloaded" data-src="<?= $block->getImageUrl($movie->getPosterPath()) ?>" data-srcset="<?= $block->getImageUrl($movie->getPosterPath()) ?> 1x, <?= $block->getImageUrl($movie->getPosterPath()) ?> 2x" alt="" src="<?= $block->getImageUrl($movie->getPosterPath()) ?>" srcset="<?= $block->getImageUrl($movie->getPosterPath()) ?> 1x, <?= $block->getImageUrl($movie->getPosterPath()) ?> 2x" data-loaded="true">
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="content">
+                                        <div class="consensus tight">
+                                            <div class="outer_ring">
+                                                <div class="user_score_chart 525978fe760ee34661a6fb6b" data-percent="<?= $movie->getVoteAverage()*10 ?>" data-track-color="#204529" data-bar-color="#21d07a">
+                                                    <div class="percent">
+                                                        <span class="icon icon-r<?= $movie->getVoteAverage()*10 ?>"><?= $movie->getVoteAverage()*10 ?></span>
+                                                    </div>
+                                                    <canvas height="34" width="34"></canvas></div>
+                                            </div>
+                                        </div>
+                                        <h2><a href="<?= $block->getMovieUrl($movie->getEntityId()) ?>" title="<?= $movie->getOriginalTitle() ?>"><?= $movie->getOriginalTitle() ?></a></h2>
+                                        <p><?= $block->formatDate($movie->getReleaseDate())?></p>
+                                    </div>
+                                    <div class="hover 48866"></div>
+                                </div>
+                            <?php endforeach; ?>
+                            <div class="card style_1 spacer"></div>
+                    </div>
+                </div>
+                <?php endforeach; ?>
+        </div>
+    </div>
+</section>
